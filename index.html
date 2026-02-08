@@ -6,11 +6,9 @@
   <title>Pozivnica za venčanje</title>
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-  <!-- CONFIGURATION: Change values below -->
+  <!-- CONFIGURATION -->
   <script>
     const CONFIG = {
       partner1: "Milutin",
@@ -27,118 +25,109 @@
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #faf7f2;
-      color: #333;
+      background: #faf9f6;
+      color: #4a4a4a;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 40px 20px;
     }
 
     h1, h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
 
+    /* HERO */
     .hero {
-      height: 80vh;
+      min-height: 100vh;
       background-size: cover;
       background-position: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: #444;
-      background-color: #f3f0ea;
     }
 
-    .names-block {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
       letter-spacing: 3px;
-    }
-
-    .name {
-      font-size: 2.5rem;
       text-transform: uppercase;
-      margin: 5px 0;
     }
 
-    .separator {
-      font-size: 2rem;
+    .and {
+      font-size: 26px;
       margin: 10px 0;
     }
 
-    section {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: auto;
+    .line {
+      width: 120px;
+      height: 1px;
+      background: #999;
+      margin: 10px auto;
     }
 
-    .countdown {
-      font-size: 2rem;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 20px;
+    /* RSVP */
+    form {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     input, select {
-      width: 100%;
       padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
+      font-family: inherit;
     }
 
     button {
-      margin-top: 15px;
-      padding: 12px 20px;
-      border: none;
-      background: #333;
+      background: #a58d7f;
       color: white;
-      border-radius: 6px;
+      border: none;
+      padding: 12px;
       cursor: pointer;
     }
 
-    button:hover {
-      background: #555;
+    /* COUNTDOWN */
+    .countdown {
+      font-family: 'Cormorant Garamond', serif;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+    .countdown div {
+      margin: 10px 0;
     }
 
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-      height: 200px;
+    .countdown span {
+      font-size: 48px;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO / NASLOVNA -->
-  <div class="hero" id="hero">
-    <div class="names-block">
-      <div class="name" id="partner1"></div>
-      <div class="separator">&</div>
-      <div class="name" id="partner2"></div>
-    </div>
-  </div>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="names" id="partner1"></div>
+    <div class="line"></div>
+    <div class="and">&</div>
+    <div class="line"></div>
+    <div class="names" id="partner2"></div>
+  </section>
 
-  <!-- POZIVNA PORUKA -->
+  <!-- POZIV -->
   <section>
-    <h2>Pozivnica</h2>
-    <p>
+    <p style="max-width:600px; font-size:18px; line-height:1.6;">
       Pozivamo Vas da svojim prisustvom upotpunite jedan od najvaznijih dana u nasim zivotima,
-      jer sreca je najlepsa kada se deli sa najdrazima!
+      jer sreca je najlepsa kad se deli sa najdrazima!
     </p>
 
     <h2 id="date"></h2>
@@ -146,42 +135,41 @@
 
   <!-- LOKACIJA -->
   <section>
-    <h2>Mesto odrzavanja</h2>
+    <h2>Mesto održavanja</h2>
     <p id="location"></p>
-    <a id="mapLink" target="_blank">Otvori mapu</a>
+    <a id="mapLink" target="_blank">Pogledaj mapu</a>
   </section>
 
   <!-- RSVP -->
   <section>
-    <h2>Potvrda dolaska (RSVP)</h2>
-    <div class="card">
-      <form name="rsvp" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="rsvp">
-
-        <input name="name" placeholder="Vaše ime" required />
-
-        <select name="attendance" required>
-          <option value="">Da li dolazite?</option>
-          <option value="yes">Da</option>
-          <option value="no">Ne</option>
-        </select>
-
-        <input name="guests" type="number" placeholder="Broj gostiju" />
-
-        <button type="submit">Pošalji</button>
-      </form>
-    </div>
+    <h2>RSVP</h2>
+    <form>
+      <input placeholder="Ime i prezime" />
+      <select>
+        <option>Dolazim</option>
+        <option>Ne dolazim</option>
+      </select>
+      <input type="number" placeholder="Broj gostiju" />
+      <button type="button">Pošalji</button>
+    </form>
   </section>
 
-  <!-- COUNTDOWN NA DNU -->
+  <!-- COUNTDOWN -->
   <section>
-    <h2>Odbrojavanje do venčanja</h2>
-    <div class="countdown" id="countdown"></div>
+    <h2>Odbrojavanje</h2>
+    <div class="countdown">
+      <div><span id="days"></span>dana</div>
+      <div><span id="hours"></span>sati</div>
+      <div><span id="minutes"></span>minuta</div>
+      <div><span id="seconds"></span>sekundi</div>
+    </div>
   </section>
 
   <script>
     document.getElementById("partner1").innerText = CONFIG.partner1;
     document.getElementById("partner2").innerText = CONFIG.partner2;
+
+    document.getElementById("hero").style.backgroundImage = `url(${CONFIG.heroImage})`;
 
     const dateObj = new Date(CONFIG.weddingDate);
     document.getElementById("date").innerText =
@@ -196,25 +184,19 @@
 
     document.getElementById("mapLink").href = CONFIG.googleMapsLink;
 
-    document.getElementById("hero").style.backgroundImage =
-      `url(${CONFIG.heroImage})`;
-
-    const countdownEl = document.getElementById("countdown");
-
     setInterval(() => {
       const now = new Date().getTime();
       const distance = new Date(CONFIG.weddingDate).getTime() - now;
 
-      if (distance < 0) {
-        countdownEl.innerHTML = "Danas je venčanje!";
-        return;
-      }
-
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
 
-      countdownEl.innerHTML = `${days} dana ${hours}h ${minutes}m`;
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
     }, 1000);
   </script>
 
