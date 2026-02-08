@@ -124,32 +124,34 @@
 </head>
 <body>
 
+  <!-- HERO / NASLOVNA -->
   <div class="hero" id="hero">
     <div class="names-block">
       <div class="name" id="partner1"></div>
       <div class="separator">&</div>
       <div class="name" id="partner2"></div>
     </div>
-    <div id="date"></div>
-    <div class="countdown" id="countdown"></div>
   </div>
 
+  <!-- POZIVNA PORUKA -->
   <section>
-    <h2>Detalji venčanja</h2>
+    <h2>Pozivnica</h2>
+    <p>
+      Pozivamo Vas da svojim prisustvom upotpunite jedan od najvaznijih dana u nasim zivotima,
+      jer sreca je najlepsa kada se deli sa najdrazima!
+    </p>
+
+    <h2 id="date"></h2>
+  </section>
+
+  <!-- LOKACIJA -->
+  <section>
+    <h2>Mesto odrzavanja</h2>
     <p id="location"></p>
     <a id="mapLink" target="_blank">Otvori mapu</a>
   </section>
 
-  <section>
-    <h2>Galerija</h2>
-    <div class="gallery">
-      <img src="images/gallery1.jpg" alt="slika1">
-      <img src="images/gallery2.jpg" alt="slika2">
-      <img src="images/gallery3.jpg" alt="slika3">
-      <img src="images/gallery4.jpg" alt="slika4">
-    </div>
-  </section>
-
+  <!-- RSVP -->
   <section>
     <h2>Potvrda dolaska (RSVP)</h2>
     <div class="card">
@@ -169,6 +171,12 @@
         <button type="submit">Pošalji</button>
       </form>
     </div>
+  </section>
+
+  <!-- COUNTDOWN NA DNU -->
+  <section>
+    <h2>Odbrojavanje do venčanja</h2>
+    <div class="countdown" id="countdown"></div>
   </section>
 
   <script>
