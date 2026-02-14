@@ -19,8 +19,7 @@
       locationAddress: "Tabanovačka bb, Majur",
       googleMapsLink: "https://share.google/WcYuOWKiOF6mHqmXF",
 
-      imageTopLeft: "images/hero.png", 
-      imageBottomRight: "images/hero.png" 
+      heroImage: "images/hero.png", 
     };
   </script>
 
@@ -404,8 +403,7 @@
     document.getElementById("locName2").innerText = CONFIG.locationName;
     
     // Postavljanje slika
-    document.getElementById("imgTopLeft").src = CONFIG.imageTopLeft;
-    document.getElementById("imgBottomRight").src = CONFIG.imageBottomRight;
+    document.getElementById("heroSection").style.backgroundImage = `url(${CONFIG.heroImage})`;
 
     // Formatiranje datuma za prikaz (Big Date)
     const weddingDate = new Date(CONFIG.weddingDate);
