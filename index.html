@@ -6,7 +6,7 @@
   <title>Pozivnica za venčanje</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <!-- CONFIGURATION -->
   <script>
@@ -14,10 +14,10 @@
       partner1: "Milutin",
       partner2: "Jelena",
       weddingDate: "2026-05-31T15:00:00",
-      locationName: "Restoran \"Ivana\", Majur",
-      locationAddress: "Tabanovačka bb Majur",
-      googleMapsLink: "https://maps.app.goo.gl/NoZGfAoYdKDiB1an7",
-      heroImage: "images/hero.png"
+      locationName: "Restoran Ivana",
+      locationAddress: "Majur — Tabanovačka bb",
+      googleMapsLink: "https://maps.google.com",
+      heroImage: "images/hero.jpg"
     };
   </script>
 
@@ -25,7 +25,7 @@
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #faf9f6;
+      background: #f4f1ec;
       color: #4a4a4a;
     }
 
@@ -36,7 +36,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
 
     h1, h2 {
@@ -58,38 +58,106 @@
 
     .names {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 56px;
-      letter-spacing: 3px;
+      font-size: 64px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-    }
-
-    .and {
-      font-size: 26px;
     }
 
     .and-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin: 10px 0;
+      gap: 18px;
+      margin: 15px 0;
+    }
+
+    .and {
+      font-size: 28px;
     }
 
     .line {
-      width: 120px;
+      width: 150px;
       height: 1px;
-      background: #999;
+      background: #777;
+    }
+
+    /* POZIV */
+    .invite-text {
+      max-width: 650px;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .date-big {
+      font-size: 42px;
+      margin-top: 40px;
+    }
+
+    /* LOKACIJA */
+    .location-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .location-name {
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 1px;
+    }
+
+    .address-top {
+      font-size: 16px;
+      opacity: 0.7;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: #b8afa6;
+      margin: 18px auto;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .map-link {
+      margin-top: 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-bottom: 1px solid #999;
+      padding-bottom: 4px;
+      color: #4a4a4a;
+    }
+
+    .icons {
+      font-size: 40px;
+      margin-bottom: 25px;
+      opacity: 0.7;
     }
 
     /* RSVP */
     form {
-      width: 320px;
+      width: 340px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     input, select {
-      padding: 10px;
+      padding: 12px;
       border: 1px solid #ddd;
       font-family: inherit;
     }
@@ -98,8 +166,9 @@
       background: #a58d7f;
       color: white;
       border: none;
-      padding: 12px;
+      padding: 14px;
       cursor: pointer;
+      font-size: 16px;
     }
 
     /* COUNTDOWN */
@@ -108,11 +177,11 @@
     }
 
     .countdown div {
-      margin: 10px 0;
+      margin: 12px 0;
     }
 
     .countdown span {
-      font-size: 48px;
+      font-size: 52px;
       display: block;
     }
   </style>
@@ -134,24 +203,33 @@
 
   <!-- POZIV -->
   <section>
-    <p style="max-width:600px; font-size:18px; line-height:1.6;">
-      Pozivamo Vas da svojim prisustvom upotpunite jedan od najvaznijih dana u nasim zivotima,
-      jer sreca je najlepsa kad se deli sa najdrazima!
+    <p class="invite-text">
+      Pozivamo Vas da svojim prisustvom upotpunite jedan od najvažnijih dana u našim životima,
+      jer sreća je najlepša kad se deli sa najdražima!
     </p>
 
-    <h2 id="date"></h2>
+    <h2 class="date-big" id="date"></h2>
+
+    <div class="icons">💍</div>
   </section>
 
   <!-- LOKACIJA -->
   <section>
-    <h2>Mesto održavanja</h2>
-    <p id="location"></p>
-    <a id="mapLink" target="_blank">Pogledaj mapu</a>
+    <div class="location-title fade-in">Mesto održavanja</div>
+
+    <div class="address-top fade-in" id="locationAddressTop"></div>
+
+    <div class="divider"></div>
+
+    <div class="location-name fade-in" id="location"></div>
+
+    <a class="map-link fade-in" id="mapLink" target="_blank">Pogledaj mapu</a>
   </section>
 
   <!-- RSVP -->
   <section>
-    <h2>RSVP</h2>
+    <div class="icons">🥂</div>
+    <h2>Potvrda dolaska</h2>
     <form>
       <input placeholder="Ime i prezime" />
       <select>
@@ -165,7 +243,6 @@
 
   <!-- COUNTDOWN -->
   <section>
-    <h2>Odbrojavanje</h2>
     <div class="countdown">
       <div><span id="days"></span>dana</div>
       <div><span id="hours"></span>sati</div>
@@ -188,8 +265,9 @@
         year: "numeric"
       });
 
-    document.getElementById("location").innerText =
-      CONFIG.locationName + " — " + CONFIG.locationAddress;
+    document.getElementById("locationAddressTop").innerText = CONFIG.locationAddress;
+
+    document.getElementById("location").innerText = CONFIG.locationName;
 
     document.getElementById("mapLink").href = CONFIG.googleMapsLink;
 
