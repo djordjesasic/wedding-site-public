@@ -7,29 +7,27 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
   <script>
     const CONFIG = {
       partner1: "JELENA ŠAŠIĆ",
       partner2: "MILUTIN ĐURĐEVIĆ",
-      // Format datuma: GGGG-MM-DDTHH:MM:SS
       weddingDate: "2026-05-31T17:00:00", 
-      locationName: "Restoran 'Ivana'",
+      locationName: "Restoran 'Manifest'",
       locationAddress: "Tabanovačka bb, Majur",
-      googleMapsLink: "https://share.google/WcYuOWKiOF6mHqmXF",
-
-      heroImage: "images/hero.png", 
+      googleMapsLink: "https://goo.gl/maps/x",
+      
+      heroImage: "images/hero.png" 
     };
   </script>
 
   <style>
     :root {
       --primary-color: #4a4a4a;
-      --accent-color: #8c9fa3; /* Sivo-zelenkasta nijansa */
-      --gold-color: #a58d7f;   /* Braonkasto-zlatna za dugmad i linije */
+      --gold-color: #a58d7f;
       --bg-color: #ffffff;
-      --input-bg: #f0f0f0;
+      --input-bg: #f9f9f9;
     }
 
     body {
@@ -41,139 +39,101 @@
       overflow-x: hidden;
     }
 
-    /* DEKORACIJA (Lišće u uglovima) */
-    .leaf-decoration {
-      position: absolute;
-      z-index: 0;
-      max-width: 40%; /* Prilagodi veličinu slika */
-      pointer-events: none;
-    }
-    .leaf-top { top: 0; left: 0; }
-    .leaf-bottom { bottom: 0; right: 0; }
-
-    /* GENERAL LAYOUT */
     section {
-      padding: 50px 20px;
+      padding: 60px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       position: relative;
-      z-index: 1;
     }
 
-    h1, h2, h3 { margin: 0; }
-
-    /* HERO SECTION */
+    /* --- HERO SEKCIJA (PRVA STRANA) --- */
     .hero {
-      min-height: 90vh;
+      min-height: 100vh; /* Zauzima ceo ekran */
       justify-content: center;
+      
+      /* Podešavanje pozadinske slike */
+      background-size: cover; /* Ili 'contain' ako želiš da se vidi cela slika bez isecanja */
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .names-container {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      letter-spacing: 2px;
-      line-height: 1.4;
+      font-size: 38px; /* Malo veći font */
+      letter-spacing: 3px;
+      line-height: 1.3;
       color: #555;
-      margin-top: 20px;
       text-transform: uppercase;
+      font-weight: 500;
+      
+      /* Opcionalno: blaga senka da se tekst odvoji od pozadine */
+      text-shadow: 0px 2px 10px rgba(255,255,255, 0.8);
     }
     
     .names-divider {
-      font-size: 24px;
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
+      font-family: 'Pinyon Script', cursive; /* Ukrasno 'i' ili '&' */
+      font-size: 40px;
+      color: #777;
+      margin: 15px 0;
+      text-transform: none;
     }
     
-    .names-divider::before, .names-divider::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 1px;
-      background-color: #777;
+    .names-line {
+        display: inline-block;
+        width: 60px;
+        height: 1px;
+        background-color: #888;
+        vertical-align: middle;
+        margin: 0 10px;
+        opacity: 0.6;
     }
 
-    /* TEXT INTRO */
+    /* --- OSTALE SEKCIJE --- */
+    
     .intro-text {
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.8;
       max-width: 500px;
       color: #666;
-      margin-bottom: 40px;
-      padding: 0 10px;
+      margin-bottom: 30px;
     }
 
-    /* DATE SECTION */
+    /* DATUM */
     .date-block {
       font-family: 'Playfair Display', serif;
       color: #6d6d6d;
       margin: 40px 0;
     }
     .date-day { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-    .date-number { font-size: 80px; font-weight: 600; line-height: 1; color: #5a5a5a; }
-    .date-month { font-size: 32px; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
-    .date-year { font-size: 24px; margin-top: 10px; color: #777; }
+    .date-number { font-size: 90px; font-weight: 500; line-height: 1; color: #5a5a5a; }
+    .date-month { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-top: 5px; }
+    .date-year { font-size: 22px; margin-top: 10px; color: #888; }
 
-    /* TIMELINE (KADA?) */
-    .timeline-icon {
-      font-size: 40px;
-      margin-bottom: 10px;
-      display: block;
-    }
-    
-    .vertical-line {
-      width: 1px;
-      height: 30px;
-      background-color: #444;
-      margin: 15px auto;
-    }
+    /* TIMELINE */
+    .timeline-icon { font-size: 36px; margin-bottom: 10px; color: #777; }
+    .vertical-line { width: 1px; height: 40px; background-color: #ccc; margin: 15px auto; }
 
-    .event-block {
-      margin-bottom: 30px;
-    }
-
-    .event-time { font-family: 'Montserrat', sans-serif; font-size: 18px; color: #555; margin-bottom: 5px; }
+    .event-time { font-family: 'Montserrat', sans-serif; font-size: 18px; color: #555; margin-bottom: 5px; font-weight: 500;}
     .event-title { 
       font-family: 'Playfair Display', serif; 
-      font-size: 22px; 
-      color: #bfaea2; /* Zlatkasta boja teksta za naslove */
+      font-size: 24px; 
+      color: #9c8c74; /* Zlatkasta nijansa */
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 5px;
-      font-weight: 600;
     }
-    .event-location {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      color: #666;
-      font-style: italic;
-    }
-    .address-details {
-      font-size: 14px;
-      color: #888;
-      margin-top: 2px;
-      font-style: italic;
-    }
+    .event-location { font-family: 'Playfair Display', serif; font-size: 18px; color: #666; font-style: italic; }
 
-    /* RSVP FORM */
+    /* RSVP */
     .rsvp-title {
       font-family: 'Pinyon Script', cursive;
-      font-size: 48px;
+      font-size: 52px;
       color: #555;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     
-    .rsvp-subtitle {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 30px;
-      line-height: 1.5;
-    }
-
     form {
       width: 100%;
       max-width: 400px;
@@ -181,120 +141,73 @@
     }
 
     label {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #444;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       display: block;
-      margin-top: 15px;
+      margin-top: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    input[type="text"], 
-    input[type="number"],
-    textarea {
+    input[type="text"], textarea {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       background-color: var(--input-bg);
-      border: 1px solid transparent;
-      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
-      box-sizing: border-box; /* Bitno da padding ne širi element */
+      box-sizing: border-box;
       outline: none;
-      transition: 0.3s;
     }
 
-    input:focus, textarea:focus {
-      border-color: #ccc;
-      background: #fff;
-    }
+    input:focus, textarea:focus { border-color: #aaa; background: #fff; }
 
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    /* Radio buttons custom styling */
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 5px;
-    }
-    
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      cursor: pointer;
-    }
+    /* Radio buttons */
+    .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
+    .radio-option { display: flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; text-transform: none; font-weight: 400; margin: 0; }
+    input[type="radio"] { accent-color: var(--gold-color); transform: scale(1.2); }
 
     button[type="submit"] {
       background-color: var(--gold-color);
       color: white;
       border: none;
-      padding: 15px 40px;
+      padding: 16px 0;
       font-size: 16px;
-      letter-spacing: 1px;
-      margin-top: 30px;
+      letter-spacing: 2px;
+      margin-top: 35px;
       cursor: pointer;
-      width: 100%; /* Full width dugme kao na slici */
+      width: 100%;
       font-family: 'Playfair Display', serif;
+      text-transform: uppercase;
       transition: background 0.3s;
     }
-    
-    button[type="submit"]:hover {
-      background-color: #8e786b;
-    }
+    button[type="submit"]:hover { background-color: #8e786b; }
 
     /* COUNTDOWN */
-    .countdown-container {
-      margin-top: 40px;
-      margin-bottom: 60px;
-    }
-
-    .timer-item {
-      margin: 15px 0;
-    }
-
-    .timer-number {
-      font-family: 'Pinyon Script', cursive;
-      font-size: 56px;
-      line-height: 1;
-      color: #555;
-    }
-
-    .timer-label {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      color: #888;
-      margin-top: -5px;
-    }
+    .countdown-container { margin-top: 40px; margin-bottom: 60px; }
+    .timer-item { margin: 15px 0; }
+    .timer-number { font-family: 'Pinyon Script', cursive; font-size: 60px; line-height: 1; color: #555; }
+    .timer-label { font-family: 'Playfair Display', serif; font-size: 14px; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-top: -5px; }
     
-    .footer {
-      font-size: 12px;
-      color: #aaa;
-      padding-bottom: 20px;
-    }
-
-    /* Responsive adjustments */
     @media (max-width: 400px) {
-      .names-container { font-size: 26px; }
-      .date-number { font-size: 60px; }
-      .rsvp-title { font-size: 38px; }
+      .names-container { font-size: 32px; }
+      .date-number { font-size: 70px; }
     }
   </style>
 </head>
 <body>
 
-  <img src="" id="imgTopLeft" class="leaf-decoration leaf-top" alt="">
-  <img src="" id="imgBottomRight" class="leaf-decoration leaf-bottom" alt="">
-
-  <section class="hero">
+  <section class="hero" id="heroSection">
     <div class="names-container">
       <div id="p1">JELENA<br>ŠAŠIĆ</div>
-      <div class="names-divider">&</div>
+      
+      <div class="names-divider">
+          <span class="names-line"></span> & <span class="names-line"></span>
+      </div>
+      
       <div id="p2">MILUTIN<br>ĐURĐEVIĆ</div>
     </div>
   </section>
@@ -306,10 +219,10 @@
     </p>
 
     <div class="date-block">
-      <div class="date-day">NEDELJA</div>
-      <div class="date-number" id="bigDateDay">31</div>
-      <div class="date-month" id="bigDateMonth">MAJ</div>
-      <div class="date-year" id="bigDateYear">2026.</div>
+      <div class="date-day" id="dateDayName">NEDELJA</div>
+      <div class="date-number" id="dateNum">31</div>
+      <div class="date-month" id="dateMonth">MAJ</div>
+      <div class="date-year" id="dateYear">2026.</div>
     </div>
   </section>
 
@@ -317,17 +230,17 @@
     <div class="timeline-icon">🥂</div>
     <div class="vertical-line"></div>
     
-    <div class="event-block">
+    <div style="margin-bottom: 40px;">
       <div class="event-time">17:00h</div>
       <div class="event-title">SKUP GOSTIJU</div>
       <div class="event-location" id="locName1">Restoran "Ivana",</div>
-      <div class="address-details" id="locAddr1">Tabanovačka bb, Majur</div>
+      <div style="color:#888; font-style:italic;" id="locAddr1">Tabanovačka bb, Majur</div>
     </div>
 
-    <div class="timeline-icon" style="margin-top: 30px;">💍</div>
+    <div class="timeline-icon">💍</div>
     <div class="vertical-line"></div>
 
-    <div class="event-block">
+    <div>
       <div class="event-time">18:30h</div>
       <div class="event-title">GRAĐANSKO<br>VENČANJE</div>
       <div class="event-location" id="locName2">Restoran "Ivana"</div>
@@ -336,106 +249,84 @@
 
   <section>
     <div class="rsvp-title">Potvrda dolaska</div>
-    <div class="rsvp-subtitle">
-      Molimo vas da svoj dolazak potvrdite do <span id="rsvpDate">10.11.2025.</span> godine.<br>
-      S poštovanjem, porodice Šašić i Đurđević
+    <div style="color:#777; font-size:14px; margin-bottom:30px;">
+        Molimo vas da potvrdite dolazak do 10.11.2025.
     </div>
 
-    <form onsubmit="alert('Hvala na potvrdi!'); return false;">
+    <form onsubmit="alert('Hvala!'); return false;">
       <label>Ime i prezime *</label>
       <input type="text" required>
 
       <label>Potvrđujem dolazak *</label>
       <div class="radio-group">
-        <label class="radio-option">
-          <input type="radio" name="dolazak" value="da" checked> Da
-        </label>
-        <label class="radio-option">
-          <input type="radio" name="dolazak" value="ne"> Ne
-        </label>
+        <label class="radio-option"><input type="radio" name="dolazak" value="da" checked> Da</label>
+        <label class="radio-option"><input type="radio" name="dolazak" value="ne"> Ne</label>
       </div>
 
-      <label>Broj gostiju (Samo ja / +1 / Porodica)</label>
-      <input type="text" placeholder="Upišite broj...">
+      <label>Broj gostiju</label>
+      <input type="text" placeholder="Npr. samo ja, ja +1...">
 
-      <label>Imena i prezimena gostiju koji dolaze sa mnom...</label>
+      <label>Imena pratilaca</label>
       <input type="text">
 
-      <label>Poruka:</label>
-      <textarea></textarea>
+      <label>Poruka</label>
+      <textarea rows="3"></textarea>
 
-      <button type="submit">Potvrdi</button>
+      <button type="submit">POTVRDI</button>
     </form>
   </section>
 
   <section>
     <div class="countdown-container">
-      <div class="timer-item">
-        <div class="timer-number" id="days">00</div>
-        <div class="timer-label">dana</div>
-      </div>
-      <div class="timer-item">
-        <div class="timer-number" id="hours">00</div>
-        <div class="timer-label">sati</div>
-      </div>
-      <div class="timer-item">
-        <div class="timer-number" id="minutes">00</div>
-        <div class="timer-label">minuta</div>
-      </div>
-      <div class="timer-item">
-        <div class="timer-number" id="seconds">00</div>
-        <div class="timer-label">sekundi</div>
-      </div>
+      <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">dana</div></div>
+      <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">sati</div></div>
+      <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">minuta</div></div>
+      <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">sekundi</div></div>
     </div>
-
   </section>
 
   <script>
-    // POPUNJAVANJE PODATAKA
+    // POSTAVLJANJE IMENA
     document.getElementById("p1").innerHTML = CONFIG.partner1.replace(" ", "<br>");
     document.getElementById("p2").innerHTML = CONFIG.partner2.replace(" ", "<br>");
     
+    // POSTAVLJANJE POZADINE HERO SEKCIJE
+    // Ovde JS uzima sliku iz CONFIG-a i lepi je na hero div
+    document.getElementById("heroSection").style.backgroundImage = `url(${CONFIG.heroImage})`;
+
     document.getElementById("locName1").innerText = CONFIG.locationName + ",";
     document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
     document.getElementById("locName2").innerText = CONFIG.locationName;
-    
-    // Postavljanje slika
-    document.getElementById("heroSection").style.backgroundImage = `url(${CONFIG.heroImage})`;
 
-    // Formatiranje datuma za prikaz (Big Date)
-    const weddingDate = new Date(CONFIG.weddingDate);
+    // DATUM
+    const wDate = new Date(CONFIG.weddingDate);
     const months = ["JANUAR", "FEBRUAR", "MART", "APRIL", "MAJ", "JUN", "JUL", "AVGUST", "SEPTEMBAR", "OKTOBAR", "NOVEMBAR", "DECEMBAR"];
     const daysWeek = ["NEDELJA", "PONEDELJAK", "UTORAK", "SREDA", "ČETVRTAK", "PETAK", "SUBOTA"];
 
-    document.getElementById("bigDateDay").innerText = weddingDate.getDate();
-    document.getElementById("bigDateMonth").innerText = months[weddingDate.getMonth()];
-    document.getElementById("bigDateYear").innerText = weddingDate.getFullYear() + ".";
-    // Automatski dan u nedelji
-    document.querySelector(".date-day").innerText = daysWeek[weddingDate.getDay()];
+    document.getElementById("dateNum").innerText = wDate.getDate();
+    document.getElementById("dateMonth").innerText = months[wDate.getMonth()];
+    document.getElementById("dateYear").innerText = wDate.getFullYear() + ".";
+    document.getElementById("dateDayName").innerText = daysWeek[wDate.getDay()];
 
-    // COUNTDOWN LOGIKA
-    function updateCountdown() {
+    // COUNTDOWN
+    function updateTimer() {
       const now = new Date().getTime();
-      const distance = new Date(CONFIG.weddingDate).getTime() - now;
+      const diff = new Date(CONFIG.weddingDate).getTime() - now;
+      
+      if(diff < 0) return;
 
-      if (distance < 0) {
-        document.querySelector(".countdown-container").innerHTML = "<h3>Srećno venčanje!</h3>";
-        return;
-      }
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      document.getElementById("days").innerText = days;
-      document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-      document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-      document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+      document.getElementById("days").innerText = d;
+      document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
+      document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
+      document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
     }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(updateTimer, 1000);
+    updateTimer();
   </script>
 
 </body>
