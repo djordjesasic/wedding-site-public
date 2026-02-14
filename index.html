@@ -363,7 +363,7 @@
     const months = ["JANUAR", "FEBRUAR", "MART", "APRIL", "MAJ", "JUN", "JUL", "AVGUST", "SEPTEMBAR", "OKTOBAR", "NOVEMBAR", "DECEMBAR"];
     const daysWeek = ["НЕДЕЉА", "PONEDELJAK", "UTORAK", "SREDA", "ČETVRTAK", "PETAK", "SUBOTA"];
 
-    document.getElementById("dateNum").innerText = wDate.getDate();
+    document.getElementById("dateNum").innerText = wDate.getDate() + ".";
     document.getElementById("dateMonth").innerText = months[wDate.getMonth()];
     document.getElementById("dateYear").innerText = wDate.getFullYear() + ".";
     document.getElementById("dateDayName").innerText = daysWeek[wDate.getDay()];
