@@ -3,277 +3,430 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pozivnica za venčanje</title>
+  <title>Jelena & Milutin - Pozivnica</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- CONFIGURATION -->
   <script>
     const CONFIG = {
-      partner1: "Milutin",
-      partner2: "Jelena",
-      weddingDate: "2026-05-31T15:00:00",
-      locationName: "Restoran Ivana",
-      locationAddress: "Majur — Tabanovačka bb",
-      googleMapsLink: "https://maps.google.com",
-      heroImage: "images/hero.png"
+      partner1: "JELENA ŠAŠIĆ",
+      partner2: "MILUTIN ĐURĐEVIĆ",
+      // Format datuma: GGGG-MM-DDTHH:MM:SS
+      weddingDate: "2025-11-22T17:00:00", 
+      locationName: "Restoran 'Ivana'",
+      locationAddress: "Tabanovačka bb, Majur",
+      googleMapsLink: "https://share.google/WcYuOWKiOF6mHqmXF",
+
+      imageTopLeft: "images/hero.png", 
+      imageBottomRight: "images/hero.png" 
     };
   </script>
 
   <style>
+    :root {
+      --primary-color: #4a4a4a;
+      --accent-color: #8c9fa3; /* Sivo-zelenkasta nijansa */
+      --gold-color: #a58d7f;   /* Braonkasto-zlatna za dugmad i linije */
+      --bg-color: #ffffff;
+      --input-bg: #f0f0f0;
+    }
+
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #f4f1ec;
-      color: #4a4a4a;
+      background: var(--bg-color);
+      color: var(--primary-color);
+      overflow-x: hidden;
     }
 
+    /* DEKORACIJA (Lišće u uglovima) */
+    .leaf-decoration {
+      position: absolute;
+      z-index: 0;
+      max-width: 40%; /* Prilagodi veličinu slika */
+      pointer-events: none;
+    }
+    .leaf-top { top: 0; left: 0; }
+    .leaf-bottom { bottom: 0; right: 0; }
+
+    /* GENERAL LAYOUT */
     section {
-      min-height: 100vh;
+      padding: 50px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
     }
 
-    h1, h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
+    h1, h2, h3 { margin: 0; }
 
-    /* HERO */
+    /* HERO SECTION */
     .hero {
-      min-height: 100vh;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
+      min-height: 90vh;
       justify-content: center;
-      align-items: center;
     }
 
-    .names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 64px;
-      letter-spacing: 4px;
+    .names-container {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      line-height: 1.4;
+      color: #555;
+      margin-top: 20px;
       text-transform: uppercase;
     }
-
-    .and-row {
+    
+    .names-divider {
+      font-size: 24px;
+      margin: 10px 0;
       display: flex;
       align-items: center;
-      gap: 18px;
-      margin: 15px 0;
+      justify-content: center;
+      gap: 15px;
     }
-
-    .and {
-      font-size: 28px;
-    }
-
-    .line {
-      width: 150px;
-      height: 1px;
-      background: #777;
-    }
-
-    /* POZIV */
-    .invite-text {
-      max-width: 650px;
-      font-size: 20px;
-      line-height: 1.8;
-    }
-
-    .date-big {
-      font-size: 42px;
-      margin-top: 40px;
-    }
-
-    /* LOKACIJA */
-    .location-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .location-name {
-      font-size: 28px;
-      margin-bottom: 10px;
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: 1px;
-    }
-
-    .address-top {
-      font-size: 16px;
-      opacity: 0.7;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .divider {
+    
+    .names-divider::before, .names-divider::after {
+      content: "";
+      display: block;
       width: 60px;
       height: 1px;
-      background: #b8afa6;
-      margin: 18px auto;
+      background-color: #777;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1.2s ease forwards;
+    /* TEXT INTRO */
+    .intro-text {
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 500px;
+      color: #666;
+      margin-bottom: 40px;
+      padding: 0 10px;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* DATE SECTION */
+    .date-block {
+      font-family: 'Playfair Display', serif;
+      color: #6d6d6d;
+      margin: 40px 0;
     }
+    .date-day { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+    .date-number { font-size: 80px; font-weight: 600; line-height: 1; color: #5a5a5a; }
+    .date-month { font-size: 32px; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+    .date-year { font-size: 24px; margin-top: 10px; color: #777; }
 
-    .map-link {
-      margin-top: 20px;
-      text-decoration: none;
-      font-size: 18px;
-      border-bottom: 1px solid #999;
-      padding-bottom: 4px;
-      color: #4a4a4a;
-    }
-
-    .icons {
+    /* TIMELINE (KADA?) */
+    .timeline-icon {
       font-size: 40px;
-      margin-bottom: 25px;
-      opacity: 0.7;
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .vertical-line {
+      width: 1px;
+      height: 30px;
+      background-color: #444;
+      margin: 15px auto;
     }
 
-    /* RSVP */
+    .event-block {
+      margin-bottom: 30px;
+    }
+
+    .event-time { font-family: 'Montserrat', sans-serif; font-size: 18px; color: #555; margin-bottom: 5px; }
+    .event-title { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 22px; 
+      color: #bfaea2; /* Zlatkasta boja teksta za naslove */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .event-location {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: #666;
+      font-style: italic;
+    }
+    .address-details {
+      font-size: 14px;
+      color: #888;
+      margin-top: 2px;
+      font-style: italic;
+    }
+
+    /* RSVP FORM */
+    .rsvp-title {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 48px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    
+    .rsvp-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
     form {
-      width: 340px;
+      width: 100%;
+      max-width: 400px;
+      text-align: left;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 5px;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"], 
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--input-bg);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      box-sizing: border-box; /* Bitno da padding ne širi element */
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #ccc;
+      background: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Radio buttons custom styling */
+    .radio-group {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      cursor: pointer;
     }
 
-    input, select {
-      padding: 12px;
-      border: 1px solid #ddd;
-      font-family: inherit;
-    }
-
-    button {
-      background: #a58d7f;
+    button[type="submit"] {
+      background-color: var(--gold-color);
       color: white;
       border: none;
-      padding: 14px;
-      cursor: pointer;
+      padding: 15px 40px;
       font-size: 16px;
+      letter-spacing: 1px;
+      margin-top: 30px;
+      cursor: pointer;
+      width: 100%; /* Full width dugme kao na slici */
+      font-family: 'Playfair Display', serif;
+      transition: background 0.3s;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #8e786b;
     }
 
     /* COUNTDOWN */
-    .countdown {
-      font-family: 'Cormorant Garamond', serif;
+    .countdown-container {
+      margin-top: 40px;
+      margin-bottom: 60px;
     }
 
-    .countdown div {
-      margin: 12px 0;
+    .timer-item {
+      margin: 15px 0;
     }
 
-    .countdown span {
-      font-size: 52px;
-      display: block;
+    .timer-number {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 56px;
+      line-height: 1;
+      color: #555;
+    }
+
+    .timer-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: #888;
+      margin-top: -5px;
+    }
+    
+    .footer {
+      font-size: 12px;
+      color: #aaa;
+      padding-bottom: 20px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 400px) {
+      .names-container { font-size: 26px; }
+      .date-number { font-size: 60px; }
+      .rsvp-title { font-size: 38px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="names" id="partner1"></div>
+  <img src="" id="imgTopLeft" class="leaf-decoration leaf-top" alt="">
+  <img src="" id="imgBottomRight" class="leaf-decoration leaf-bottom" alt="">
 
-    <div class="and-row">
-      <div class="line"></div>
-      <div class="and">&</div>
-      <div class="line"></div>
+  <section class="hero">
+    <div class="names-container">
+      <div id="p1">JELENA<br>ŠAŠIĆ</div>
+      <div class="names-divider">&</div>
+      <div id="p2">MILUTIN<br>ĐURĐEVIĆ</div>
     </div>
-
-    <div class="names" id="partner2"></div>
   </section>
 
-  <!-- POZIV -->
   <section>
-    <p class="invite-text">
+    <p class="intro-text">
       Pozivamo Vas da svojim prisustvom upotpunite jedan od najvažnijih dana u našim životima,
       jer sreća je najlepša kad se deli sa najdražima!
     </p>
 
-    <h2 class="date-big" id="date"></h2>
-
-    <div class="icons">💍</div>
+    <div class="date-block">
+      <div class="date-day">NEDELJA</div>
+      <div class="date-number" id="bigDateDay">31</div>
+      <div class="date-month" id="bigDateMonth">MAJ</div>
+      <div class="date-year" id="bigDateYear">2026.</div>
+    </div>
   </section>
 
-  <!-- LOKACIJA -->
   <section>
-    <div class="location-title fade-in">Mesto održavanja</div>
+    <div class="timeline-icon">🥂</div>
+    <div class="vertical-line"></div>
+    
+    <div class="event-block">
+      <div class="event-time">17:00h</div>
+      <div class="event-title">SKUP GOSTIJU</div>
+      <div class="event-location" id="locName1">Restoran "Ivana",</div>
+      <div class="address-details" id="locAddr1">Tabanovačka bb, Majur</div>
+    </div>
 
-    <div class="address-top fade-in" id="locationAddressTop"></div>
+    <div class="timeline-icon" style="margin-top: 30px;">💍</div>
+    <div class="vertical-line"></div>
 
-    <div class="divider"></div>
-
-    <div class="location-name fade-in" id="location"></div>
-
-    <a class="map-link fade-in" id="mapLink" target="_blank">Pogledaj mapu</a>
+    <div class="event-block">
+      <div class="event-time">18:30h</div>
+      <div class="event-title">GRAĐANSKO<br>VENČANJE</div>
+      <div class="event-location" id="locName2">Restoran "Ivana"</div>
+    </div>
   </section>
 
-  <!-- RSVP -->
   <section>
-    <div class="icons">🥂</div>
-    <h2>Potvrda dolaska</h2>
-    <form>
-      <input placeholder="Ime i prezime" />
-      <select>
-        <option>Dolazim</option>
-        <option>Ne dolazim</option>
-      </select>
-      <input type="number" placeholder="Broj gostiju" />
-      <button type="button">Pošalji</button>
+    <div class="rsvp-title">Potvrda dolaska</div>
+    <div class="rsvp-subtitle">
+      Molimo vas da svoj dolazak potvrdite do <span id="rsvpDate">10.11.2025.</span> godine.<br>
+      S poštovanjem, porodice Šašić i Đurđević
+    </div>
+
+    <form onsubmit="alert('Hvala na potvrdi!'); return false;">
+      <label>Ime i prezime *</label>
+      <input type="text" required>
+
+      <label>Potvrđujem dolazak *</label>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="dolazak" value="da" checked> Da
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="dolazak" value="ne"> Ne
+        </label>
+      </div>
+
+      <label>Broj gostiju (Samo ja / +1 / Porodica)</label>
+      <input type="text" placeholder="Upišite broj...">
+
+      <label>Imena i prezimena gostiju koji dolaze sa mnom...</label>
+      <input type="text">
+
+      <label>Poruka:</label>
+      <textarea></textarea>
+
+      <button type="submit">Potvrdi</button>
     </form>
   </section>
 
-  <!-- COUNTDOWN -->
   <section>
-    <div class="countdown">
-      <div><span id="days"></span>dana</div>
-      <div><span id="hours"></span>sati</div>
-      <div><span id="minutes"></span>minuta</div>
-      <div><span id="seconds"></span>sekundi</div>
+    <div class="countdown-container">
+      <div class="timer-item">
+        <div class="timer-number" id="days">00</div>
+        <div class="timer-label">dana</div>
+      </div>
+      <div class="timer-item">
+        <div class="timer-number" id="hours">00</div>
+        <div class="timer-label">sati</div>
+      </div>
+      <div class="timer-item">
+        <div class="timer-number" id="minutes">00</div>
+        <div class="timer-label">minuta</div>
+      </div>
+      <div class="timer-item">
+        <div class="timer-number" id="seconds">00</div>
+        <div class="timer-label">sekundi</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Powered by e-pozivnice
     </div>
   </section>
 
   <script>
-    document.getElementById("partner1").innerText = CONFIG.partner1;
-    document.getElementById("partner2").innerText = CONFIG.partner2;
+    // POPUNJAVANJE PODATAKA
+    document.getElementById("p1").innerHTML = CONFIG.partner1.replace(" ", "<br>");
+    document.getElementById("p2").innerHTML = CONFIG.partner2.replace(" ", "<br>");
+    
+    document.getElementById("locName1").innerText = CONFIG.locationName + ",";
+    document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
+    document.getElementById("locName2").innerText = CONFIG.locationName;
+    
+    // Postavljanje slika
+    document.getElementById("imgTopLeft").src = CONFIG.imageTopLeft;
+    document.getElementById("imgBottomRight").src = CONFIG.imageBottomRight;
 
-    document.getElementById("hero").style.backgroundImage = `url(${CONFIG.heroImage})`;
+    // Formatiranje datuma za prikaz (Big Date)
+    const weddingDate = new Date(CONFIG.weddingDate);
+    const months = ["JANUAR", "FEBRUAR", "MART", "APRIL", "MAJ", "JUN", "JUL", "AVGUST", "SEPTEMBAR", "OKTOBAR", "NOVEMBAR", "DECEMBAR"];
+    const daysWeek = ["NEDELJA", "PONEDELJAK", "UTORAK", "SREDA", "ČETVRTAK", "PETAK", "SUBOTA"];
 
-    const dateObj = new Date(CONFIG.weddingDate);
-    document.getElementById("date").innerText =
-      dateObj.toLocaleDateString("sr-RS", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      });
+    document.getElementById("bigDateDay").innerText = weddingDate.getDate();
+    document.getElementById("bigDateMonth").innerText = months[weddingDate.getMonth()];
+    document.getElementById("bigDateYear").innerText = weddingDate.getFullYear() + ".";
+    // Automatski dan u nedelji
+    document.querySelector(".date-day").innerText = daysWeek[weddingDate.getDay()];
 
-    document.getElementById("locationAddressTop").innerText = CONFIG.locationAddress;
-
-    document.getElementById("location").innerText = CONFIG.locationName;
-
-    document.getElementById("mapLink").href = CONFIG.googleMapsLink;
-
-    setInterval(() => {
+    // COUNTDOWN LOGIKA
+    function updateCountdown() {
       const now = new Date().getTime();
       const distance = new Date(CONFIG.weddingDate).getTime() - now;
+
+      if (distance < 0) {
+        document.querySelector(".countdown-container").innerHTML = "<h3>Srećno venčanje!</h3>";
+        return;
+      }
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
@@ -281,10 +434,13 @@
       const seconds = Math.floor((distance / 1000) % 60);
 
       document.getElementById("days").innerText = days;
-      document.getElementById("hours").innerText = hours;
-      document.getElementById("minutes").innerText = minutes;
-      document.getElementById("seconds").innerText = seconds;
-    }, 1000);
+      document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 
 </body>
