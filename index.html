@@ -17,6 +17,7 @@
       locationName: "Ресторан 'Ивана'",
       locationAddress: "Табановачка бб, Мајур",
       googleMapsLink: "https://maps.app.goo.gl/mFqwkPCbytjeZhNe8",
+      churchLocation: "Црква Успења Пресвете Богородице, Вукона",
 
       galleryImages: [
         "images/1.jpeg",
@@ -271,15 +272,21 @@
   </section>
 
   <section>
+    <div class="timeline-icon">💍</div>
+    <div class="vertical-line"></div>
+    <div style="margin-bottom: 40px;">
+      <div class="event-time">14:30h</div>
+      <div class="event-title">ЦРКВЕНО<br>ВЕНЧАЊЕ</div>
+      <div class="event-location" id="church">Црква Успења Пресвете Богородице, Вукона</div>
+    </div>
     <div class="timeline-icon">🥂</div>
     <div class="vertical-line"></div>
     <div style="margin-bottom: 40px;">
       <div class="event-time">17:00h</div>
-      <div class="event-title">СКУП ГОСТИЈУ</div>
+      <div class="event-title">СВЕЧАНИ РУЧАК</div>
       <div class="event-location" id="locName1">Ресторан "Ивана",</div>
       <div style="color:#888; font-style:italic;" id="locAddr1">Табановачка бб, Мајур</div>
     </div>
-
     <div class="timeline-icon">💍</div>
     <div class="vertical-line"></div>
     <div>
@@ -335,6 +342,7 @@
     document.getElementById("locName1").innerText = CONFIG.locationName + ",";
     document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
     document.getElementById("locName2").innerText = CONFIG.locationName;
+    document.getElementById("church").innerText = CONFIG.churchLocation;
 
     // GENERISANJE GALERIJE
     const galleryContainer = document.getElementById("galleryContainer");
