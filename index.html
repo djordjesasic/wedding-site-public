@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <script>
     const CONFIG = {
       partner1: "Јелена Шашић",
       partner2: "Милутин Ђурђевић",
-      weddingDate: "2026-05-31T17:00:00", 
+      weddingDate: "2026-05-31T17:00:00",
       locationName: "Ресторан 'Ивана'",
       locationAddress: "Табановачка бб, Мајур",
       googleMapsLink: "https://maps.app.goo.gl/mFqwkPCbytjeZhNe8",
@@ -32,8 +37,8 @@
         "images/10.jpeg",
         "images/11.jpeg"
       ],
-      
-      heroImage: "images/hero.png" 
+
+      heroImage: "images/hero.png"
     };
   </script>
 
@@ -65,25 +70,29 @@
 
     /* --- HERO SEKCIJA (PRVA STRANA) --- */
     .hero {
-      min-height: 100vh; /* Zauzima ceo ekran */
+      min-height: 100vh;
+      /* Zauzima ceo ekran */
       justify-content: center;
-      background-size: cover; 
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
     .names-container {
       font-family: 'Cormorant Garamond', serif;
-      font-style: italic; /* Ključno za "pisani" izgled */
-      font-size: 55px; /* Povećao sam jer je ovaj font nežniji */
-      letter-spacing: 0px; /* Spojena slova izgledaju lepše bez razmaka */
+      font-style: italic;
+      /* Ključno za "pisani" izgled */
+      font-size: 55px;
+      /* Povećao sam jer je ovaj font nežniji */
+      letter-spacing: 0px;
+      /* Spojena slova izgledaju lepše bez razmaka */
       line-height: 1.1;
       color: #444;
-      text-transform: none; 
+      text-transform: none;
       font-weight: 500;
-      text-shadow: 0px 2px 15px rgba(255,255,255, 0.9);
+      text-shadow: 0px 2px 15px rgba(255, 255, 255, 0.9);
     }
-    
+
     .names-divider {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -91,21 +100,23 @@
       color: #777;
       margin: 10px 0;
     }
-    
+
     .names-line {
-        display: inline-block;
-        width: 60px;
-        height: 1px;
-        background-color: #888;
-        vertical-align: middle;
-        margin: 0 10px;
-        opacity: 0.6;
+      display: inline-block;
+      width: 60px;
+      height: 1px;
+      background-color: #888;
+      vertical-align: middle;
+      margin: 0 10px;
+      opacity: 0.6;
     }
 
     /* --- GALERIJA (TRAKA) --- */
     .gallery-section {
-      padding: 30px 0; /* Manji padding gore/dole */
-      background-color: #fafafa; /* Blago siva pozadina da se izdvoji */
+      padding: 30px 0;
+      /* Manji padding gore/dole */
+      background-color: #fafafa;
+      /* Blago siva pozadina da se izdvoji */
       width: 100%;
       overflow: hidden;
     }
@@ -114,25 +125,31 @@
       display: flex;
       gap: 15px;
       padding: 0 20px;
-      overflow-x: auto; /* Omogućava skrol levo-desno */
+      overflow-x: auto;
+      /* Omogućava skrol levo-desno */
       scroll-behavior: smooth;
       width: 100%;
       box-sizing: border-box;
-      
+
       /* Sakrivanje scrollbara za lepši izgled */
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none;  /* IE 10+ */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE 10+ */
     }
-    
-    .gallery-container::-webkit-scrollbar { 
-      display: none; /* Chrome/Safari */
+
+    .gallery-container::-webkit-scrollbar {
+      display: none;
+      /* Chrome/Safari */
     }
 
     .gallery-item {
-      height: 250px; /* Visina trake */
-      flex: 0 0 auto; /* Ne dozvoljava sužavanje slika */
+      height: 250px;
+      /* Visina trake */
+      flex: 0 0 auto;
+      /* Ne dozvoljava sužavanje slika */
       border-radius: 4px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       object-fit: cover;
       transition: transform 0.3s ease;
     }
@@ -151,24 +168,72 @@
       color: #6d6d6d;
       margin: 40px 0;
     }
-    .date-day { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-    .date-number { font-size: 90px; font-weight: 500; line-height: 1; color: #5a5a5a; }
-    .date-month { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; margin-top: 5px; }
-    .date-year { font-size: 22px; margin-top: 10px; color: #888; }
+
+    .date-day {
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .date-number {
+      font-size: 90px;
+      font-weight: 500;
+      line-height: 1;
+      color: #5a5a5a;
+    }
+
+    .date-month {
+      font-size: 28px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .date-year {
+      font-size: 22px;
+      margin-top: 10px;
+      color: #888;
+    }
 
     /* TIMELINE */
-    .timeline-icon { font-size: 36px; margin-bottom: 10px; color: #777; }
-    .vertical-line { width: 1px; height: 40px; background-color: #ccc; margin: 15px auto; }
-    .event-time { font-family: 'Montserrat', sans-serif; font-size: 18px; color: #555; margin-bottom: 5px; font-weight: 500;}
-    .event-title { 
-      font-family: 'Playfair Display', serif; 
-      font-size: 24px; 
-      color: #9c8c74; /* Zlatkasta nijansa */
+    .timeline-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #777;
+    }
+
+    .vertical-line {
+      width: 1px;
+      height: 40px;
+      background-color: #ccc;
+      margin: 15px auto;
+    }
+
+    .event-time {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #9c8c74;
+      /* Zlatkasta nijansa */
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 5px;
     }
-    .event-location { font-family: 'Playfair Display', serif; font-size: 18px; color: #666; font-style: italic; }
+
+    .event-location {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #666;
+      font-style: italic;
+    }
 
     /* RSVP */
     .rsvp-title {
@@ -177,7 +242,7 @@
       color: #555;
       margin-bottom: 15px;
     }
-    
+
     form {
       width: 100%;
       max-width: 400px;
@@ -195,7 +260,8 @@
       letter-spacing: 0.5px;
     }
 
-    input[type="text"], textarea {
+    input[type="text"],
+    textarea {
       width: 100%;
       padding: 14px;
       background-color: var(--input-bg);
@@ -207,12 +273,35 @@
       outline: none;
     }
 
-    input:focus, textarea:focus { border-color: #aaa; background: #fff; }
+    input:focus,
+    textarea:focus {
+      border-color: #aaa;
+      background: #fff;
+    }
 
     /* Radio buttons */
-    .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
-    .radio-option { display: flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; text-transform: none; font-weight: 400; margin: 0; }
-    input[type="radio"] { accent-color: var(--gold-color); transform: scale(1.2); }
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      text-transform: none;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    input[type="radio"] {
+      accent-color: var(--gold-color);
+      transform: scale(1.2);
+    }
 
     button[type="submit"] {
       background-color: var(--gold-color);
@@ -228,30 +317,59 @@
       text-transform: uppercase;
       transition: background 0.3s;
     }
-    button[type="submit"]:hover { background-color: #8e786b; }
+
+    button[type="submit"]:hover {
+      background-color: #8e786b;
+    }
 
     /* COUNTDOWN */
-    .countdown-container { margin-top: 40px; margin-bottom: 60px; }
-    .timer-item { margin: 15px 0; }
-    .timer-number { font-family: 'Pinyon Script', cursive; font-size: 60px; line-height: 1; color: #555; }
-    .timer-label { font-family: 'Playfair Display', serif; font-size: 14px; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-top: -5px; }
-    
+    .countdown-container {
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+
+    .timer-item {
+      margin: 15px 0;
+    }
+
+    .timer-number {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 60px;
+      line-height: 1;
+      color: #555;
+    }
+
+    .timer-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: -5px;
+    }
+
     @media (max-width: 400px) {
-      .names-container { font-size: 32px; }
-      .date-number { font-size: 70px; }
+      .names-container {
+        font-size: 32px;
+      }
+
+      .date-number {
+        font-size: 70px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <section class="hero" id="heroSection">
     <div class="names-container">
       <div id="p1">Јелена<br>Шашић</div>
-      
+
       <div class="names-divider">
-          <span class="names-line"></span> & <span class="names-line"></span>
+        <span class="names-line"></span> & <span class="names-line"></span>
       </div>
-      
+
       <div id="p2">Милутин<br>Ђурђевић</div>
     </div>
   </section>
@@ -261,11 +379,11 @@
       Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
       јер срећа је најлепша кад се дели са најдражима!
     </p>
-  
+
     <div class="gallery-section">
-    <div class="gallery-container" id="galleryContainer">
+      <div class="gallery-container" id="galleryContainer">
       </div>
-  </div>
+    </div>
 
     <div class="date-block">
       <div class="date-day" id="dateDayName">НЕДЕЉА</div>
@@ -303,38 +421,50 @@
   <section>
     <div class="rsvp-title">Потврда доласка</div>
     <div style="color:#777; font-size:14px; margin-bottom:30px;">
-        Молимо Вас да потврдите долазак до 10.05.2026.
+      Молимо Вас да потврдите долазак до 10.05.2026.
     </div>
 
-    <form onsubmit="alert('Hvala!'); return false;">
+    <form id="rsvp-form">
       <label>Име и презиме *</label>
-      <input type="text" required>
+      <input type="text" name="Ime i prezime" required>
 
       <label>Потврђујем долазак*</label>
       <div class="radio-group">
-        <label class="radio-option"><input type="radio" name="dolazak" value="da" checked> Да</label>
-        <label class="radio-option"><input type="radio" name="dolazak" value="ne"> Не</label>
+        <label class="radio-option"><input type="radio" name="Dolazak" value="da" checked> Да</label>
+        <label class="radio-option"><input type="radio" name="Dolazak" value="ne"> Не</label>
       </div>
 
       <label>Број гостију</label>
-      <input type="text" placeholder="Нпр. само ја, ја +1...">
+      <input type="text" name="Broj gostiju" placeholder="Нпр. само ја, ја +1...">
 
       <label>Имена пратилаца</label>
-      <input type="text">
+      <input type="text" name="Imena pratilaca">
 
       <label>Порука</label>
-      <textarea rows="3"></textarea>
+      <textarea name="Poruka" rows="3"></textarea>
 
-      <button type="submit">Потврди</button>
+      <button type="submit" id="submit-btn">Потврди</button>
     </form>
   </section>
 
   <section>
     <div class="countdown-container">
-      <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">дана</div></div>
-      <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">сати</div></div>
-      <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">минута</div></div>
-      <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">секунди</div></div>
+      <div class="timer-item">
+        <div class="timer-number" id="days">00</div>
+        <div class="timer-label">дана</div>
+      </div>
+      <div class="timer-item">
+        <div class="timer-number" id="hours">00</div>
+        <div class="timer-label">сати</div>
+      </div>
+      <div class="timer-item">
+        <div class="timer-number" id="minutes">00</div>
+        <div class="timer-label">минута</div>
+      </div>
+      <div class="timer-item">
+        <div class="timer-number" id="seconds">00</div>
+        <div class="timer-label">секунди</div>
+      </div>
     </div>
   </section>
 
@@ -350,16 +480,16 @@
 
     // GENERISANJE GALERIJE
     const galleryContainer = document.getElementById("galleryContainer");
-    if(CONFIG.galleryImages && CONFIG.galleryImages.length > 0) {
-        CONFIG.galleryImages.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.className = "gallery-item";
-            galleryContainer.appendChild(img);
-        });
+    if (CONFIG.galleryImages && CONFIG.galleryImages.length > 0) {
+      CONFIG.galleryImages.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.className = "gallery-item";
+        galleryContainer.appendChild(img);
+      });
     } else {
-        // Ako nema slika, sakrij celu sekciju da ne bude praznog prostora
-        document.querySelector(".gallery-section").style.display = "none";
+      // Ako nema slika, sakrij celu sekciju da ne bude praznog prostora
+      document.querySelector(".gallery-section").style.display = "none";
     }
 
     // DATUM
@@ -376,21 +506,46 @@
     function updateTimer() {
       const now = new Date().getTime();
       const diff = new Date(CONFIG.weddingDate).getTime() - now;
-      if(diff < 0) return;
+      if (diff < 0) return;
 
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const s = Math.floor((diff % (1000*60)) / 1000);
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
 
       document.getElementById("days").innerText = d;
-      document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
-      document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
-      document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
+      document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+      document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+      document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
     }
     setInterval(updateTimer, 1000);
     updateTimer();
+
+    // RSVP Send 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzsYXO8G3ntM7KTEAgrJzYvPM4unNkqTwCZ7ADxFeUxT44KJwxPHd2n8Ire5sbw1ahI/exec'
+    const form = document.getElementById('rsvp-form')
+    const btn = document.getElementById('submit-btn')
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      btn.disabled = true
+      btn.innerText = 'СЛАЊЕ...'
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          alert('Хвала! Ваша потврда је успешно послата.')
+          btn.disabled = false
+          btn.innerText = 'ПОТВРДИ'
+          form.reset()
+        })
+        .catch(error => {
+          alert('Грешка! Покушајте поново.')
+          btn.disabled = false
+          btn.innerText = 'ПОТВРДИ'
+        })
+    })
   </script>
 
 </body>
+
 </html>
