@@ -348,6 +348,102 @@
       margin-top: -5px;
     }
 
+    /* --- MODAL STIL --- */
+    .modal-overlay {
+      display: none;
+      /* Sakriveno po defaultu */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      /* Zatamnjena pozadina */
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 4px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    /* Zlatni okvir unutar modala za eleganciju */
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid var(--gold-color);
+      pointer-events: none;
+    }
+
+    .modal-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 38px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .modal-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .modal-subtext {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: #999;
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+
+    .modal-content button {
+      background-color: var(--gold-color);
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .modal-content button:hover {
+      background-color: #8e786b;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 400px) {
       .names-container {
         font-size: 32px;
@@ -467,7 +563,15 @@
       </div>
     </div>
   </section>
-
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">🥂</div>
+      <div class="modal-title">Hvala Vam!</div>
+      <p class="modal-text">Vaš odgovor je uspešno zabeležen.</p>
+      <p class="modal-subtext">Radujemo se što ćemo zajedno proslaviti ovaj dan!</p>
+      <button onclick="closeModal()">U redu</button>
+    </div>
+  </div>
   <script>
     // POSTAVLJANJE IMENA
     document.getElementById("p1").innerHTML = CONFIG.partner1.replace(" ", "<br>");
@@ -521,29 +625,53 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // RSVP Send 
+    // FUNKCIJE ZA MODAL
+    function openModal() {
+      document.getElementById('successModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').style.display = 'none';
+    }
+
+    // AŽURIRANA SKRIPTA ZA SLANJE
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz3nmshWJeV0TOrSYE-DBeqcaLATZ66yphPTPqSRAbGEIZ4HamlI-r1ZFHqUXDtuJgW/exec'
     const form = document.getElementById('rsvp-form')
     const btn = document.getElementById('submit-btn')
 
     form.addEventListener('submit', e => {
       e.preventDefault()
+      
+      // Promeni dugme dok se šalje
+      const originalText = btn.innerText;
       btn.disabled = true
-      btn.innerText = 'СЛАЊЕ...'
+      btn.innerText = 'Slanje...'
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-          alert('Хвала! Ваша потврда је успешно послата.')
-          btn.disabled = false
-          btn.innerText = 'ПОТВРДИ'
-          form.reset()
+           // SAKRIJ ALERT, PRIKAŽI LEP MODAL
+           openModal();
+           
+           // Resetuj formu
+           form.reset();
+           
+           // Vrati dugme u normalu
+           btn.disabled = false
+           btn.innerText = originalText;
         })
         .catch(error => {
-          alert('Грешка! Покушајте поново.')
-          btn.disabled = false
-          btn.innerText = 'ПОТВРДИ'
+           alert('Došlo je do greške! Molimo pokušajte ponovo.'); // Ovde ostavi alert za grešku
+           btn.disabled = false
+           btn.innerText = originalText;
         })
     })
+    
+    // Zatvori modal ako neko klikne sa strane (na sivu pozadinu)
+    document.getElementById('successModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
   </script>
 
 </body>
