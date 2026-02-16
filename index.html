@@ -531,7 +531,7 @@
       </div>
 
       <label>Број гостију</label>
-      <input type="text" name="Broj gostiju" placeholder="Нпр. само ја, ја +1...">
+      <input type="text" name="Broj gostiju" placeholder="Нпр. само ја, ја +1..." required>
 
       <label>Имена пратилаца</label>
       <input type="text" name="Imena pratilaca">
@@ -566,10 +566,10 @@
   <div id="successModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-icon">🥂</div>
-      <div class="modal-title">Hvala Vam!</div>
-      <p class="modal-text">Vaš odgovor je uspešno zabeležen.</p>
-      <p class="modal-subtext">Radujemo se što ćemo zajedno proslaviti ovaj dan!</p>
-      <button onclick="closeModal()">U redu</button>
+      <div class="modal-title">Хвала Вам!</div>
+      <p class="modal-text">Ваш одговор је успешно забележен.</p>
+      <p class="modal-subtext">Радојемо се што ћемо заједно прославити овај дан!</p>
+      <button onclick="closeModal()">У реду</button>
     </div>
   </div>
   <script>
@@ -645,7 +645,7 @@
       // Promeni dugme dok se šalje
       const originalText = btn.innerText;
       btn.disabled = true
-      btn.innerText = 'Slanje...'
+      btn.innerText = 'Слање...'
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
@@ -660,7 +660,7 @@
            btn.innerText = originalText;
         })
         .catch(error => {
-           alert('Došlo je do greške! Molimo pokušajte ponovo.'); // Ovde ostavi alert za grešku
+           alert('Дошло је до грешке, молимо Вас покушајте поново.'); // Ovde ostavi alert za grešku
            btn.disabled = false
            btn.innerText = originalText;
         })
