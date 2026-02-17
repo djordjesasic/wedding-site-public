@@ -68,24 +68,35 @@
       position: relative;
     }
 
-    /* --- HERO SEKCIJA (PRVA STRANA) --- */
-    .hero {
-      min-height: 100vh;
-      /* Zauzima ceo ekran */
-      justify-content: center;
+    /* --- NOVI WRAPPER ZA POZADINU --- */
+    #mainWrapper {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      width: 100%;
+      /* Opcionalno: fiksira pozadinu dok skrolujes (parallax efekat) */
+      /* background-attachment: fixed; */ 
+    }
+
+    /* --- HERO SEKCIJA (PRVA STRANA) --- */
+    .hero {
+      min-height: 100vh;
+      justify-content: center;
+      /* Pozadina je sada na wrapperu, ovde mora biti transparentna */
+      background: transparent; 
+    }
+
+    /* Sekcija sa tekstom i datumom takodje transparentna da se vidi slika */
+    .transparent-section {
+      background: transparent;
+      padding-top: 0; /* Malo manje lufta jer se nastavlja na hero */
     }
 
     .names-container {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      /* Ključno za "pisani" izgled */
       font-size: 55px;
-      /* Povećao sam jer je ovaj font nežniji */
       letter-spacing: 0px;
-      /* Spojena slova izgledaju lepše bez razmaka */
       line-height: 1.1;
       color: #444;
       text-transform: none;
@@ -114,11 +125,12 @@
     /* --- GALERIJA (TRAKA) --- */
     .gallery-section {
       padding: 30px 0;
-      /* Manji padding gore/dole */
-      background-color: #fafafa;
-      /* Blago siva pozadina da se izdvoji */
+      /* Uklonjena siva boja, sada je transparentno ili blago belo */
+      background-color: rgba(255, 255, 255, 0.3); 
       width: 100%;
       overflow: hidden;
+      margin-top: 20px;
+      border-radius: 8px; /* Blago zaobljene ivice trake */
     }
 
     .gallery-container {
@@ -126,28 +138,20 @@
       gap: 15px;
       padding: 0 20px;
       overflow-x: auto;
-      /* Omogućava skrol levo-desno */
       scroll-behavior: smooth;
       width: 100%;
       box-sizing: border-box;
-
-      /* Sakrivanje scrollbara za lepši izgled */
       scrollbar-width: none;
-      /* Firefox */
       -ms-overflow-style: none;
-      /* IE 10+ */
     }
 
     .gallery-container::-webkit-scrollbar {
       display: none;
-      /* Chrome/Safari */
     }
 
     .gallery-item {
       height: 250px;
-      /* Visina trake */
       flex: 0 0 auto;
-      /* Ne dozvoljava sužavanje slika */
       border-radius: 4px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       object-fit: cover;
@@ -156,11 +160,15 @@
 
     /* --- OSTALE SEKCIJE --- */
     .intro-text {
-      font-size: 16px;
+      font-size: 17px; /* Malo podebljano za citljivost preko slike */
       line-height: 1.8;
       max-width: 500px;
-      color: #666;
+      color: #4a4a4a;
+      font-weight: 500;
       margin-bottom: 30px;
+      background: rgba(255,255,255,0.6); /* Blaga bela pozadina iza teksta za citljivost */
+      padding: 20px;
+      border-radius: 8px;
     }
 
     .date-block {
@@ -222,7 +230,6 @@
       font-family: 'Playfair Display', serif;
       font-size: 24px;
       color: #9c8c74;
-      /* Zlatkasta nijansa */
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 5px;
@@ -279,7 +286,6 @@
       background: #fff;
     }
 
-    /* Radio buttons */
     .radio-group {
       display: flex;
       flex-direction: column;
@@ -348,17 +354,15 @@
       margin-top: -5px;
     }
 
-    /* --- MODAL STIL --- */
+    /* MODAL */
     .modal-overlay {
       display: none;
-      /* Sakriveno po defaultu */
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.6);
-      /* Zatamnjena pozadina */
       z-index: 1000;
       justify-content: center;
       align-items: center;
@@ -377,7 +381,6 @@
       position: relative;
     }
 
-    /* Zlatni okvir unutar modala za eleganciju */
     .modal-content::before {
       content: '';
       position: absolute;
@@ -389,107 +392,57 @@
       pointer-events: none;
     }
 
-    .modal-icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .modal-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 38px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    .modal-text {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 5px;
-    }
-
-    .modal-subtext {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      color: #999;
-      font-style: italic;
-      margin-bottom: 25px;
-    }
-
-    .modal-content button {
-      background-color: var(--gold-color);
-      color: white;
-      border: none;
-      padding: 10px 30px;
-      font-family: 'Montserrat', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-
-    .modal-content button:hover {
-      background-color: #8e786b;
-    }
+    .modal-icon { font-size: 40px; margin-bottom: 15px; }
+    .modal-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 38px; color: #555; margin-bottom: 10px; }
+    .modal-text { font-family: 'Montserrat', sans-serif; font-size: 16px; color: #666; margin-bottom: 5px; }
+    .modal-content button { background-color: var(--gold-color); color: white; border: none; padding: 10px 30px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; font-size: 14px; transition: background 0.3s; }
+    .modal-content button:hover { background-color: #8e786b; }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 400px) {
-      .names-container {
-        font-size: 32px;
-      }
-
-      .date-number {
-        font-size: 70px;
-      }
+      .names-container { font-size: 32px; }
+      .date-number { font-size: 70px; }
     }
   </style>
 </head>
 
 <body>
-<div id="heroWrapper" class="hero-wrapper"></div>
-  <section class="hero">
-    <div class="names-container">
-      <div id="p1">Јелена<br>Шашић</div>
 
-      <div class="names-divider">
-        <span class="names-line"></span> & <span class="names-line"></span>
+  <div id="mainWrapper">
+    
+    <section class="hero" id="heroSection">
+      <div class="names-container">
+        <div id="p1">Јелена<br>Шашић</div>
+        <div class="names-divider">
+          <span class="names-line"></span> & <span class="names-line"></span>
+        </div>
+        <div id="p2">Милутин<br>Ђурђевић</div>
+      </div>
+    </section>
+
+    <section class="transparent-section">
+      <p class="intro-text">
+        Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
+        јер срећа је најлепша кад се дели са најдражима!
+      </p>
+
+      <div class="gallery-section">
+        <div class="gallery-container" id="galleryContainer">
+        </div>
       </div>
 
-      <div id="p2">Милутин<br>Ђурђевић</div>
-    </div>
-  </section>
-
-  <section class="hero">
-    <p class="intro-text">
-      Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
-      јер срећа је најлепша кад се дели са најдражима!
-    </p>
-
-    <div class="gallery-section">
-      <div class="gallery-container" id="galleryContainer">
+      <div class="date-block">
+        <div class="date-day" id="dateDayName">НЕДЕЉА</div>
+        <div class="date-number" id="dateNum">31.</div>
+        <div class="date-month" id="dateMonth">МАЈ</div>
+        <div class="date-year" id="dateYear">2026.</div>
       </div>
-    </div>
-
-    <div class="date-block">
-      <div class="date-day" id="dateDayName">НЕДЕЉА</div>
-      <div class="date-number" id="dateNum">31.</div>
-      <div class="date-month" id="dateMonth">МАЈ</div>
-      <div class="date-year" id="dateYear">2026.</div>
-    </div>
-  </section>
-</div>
-  <section>
+    </section>
+  </div> <section>
     <div class="timeline-icon">💍</div>
     <div class="vertical-line"></div>
     <div style="margin-bottom: 40px;">
@@ -563,6 +516,7 @@
       </div>
     </div>
   </section>
+
   <div id="successModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-icon">🥂</div>
@@ -571,11 +525,15 @@
       <button onclick="closeModal()">У реду</button>
     </div>
   </div>
+
   <script>
     // POSTAVLJANJE IMENA
     document.getElementById("p1").innerHTML = CONFIG.partner1.replace(" ", "<br>");
     document.getElementById("p2").innerHTML = CONFIG.partner2.replace(" ", "<br>");
-    document.getElementById("heroWrapper").style.backgroundImage = `url(${CONFIG.heroImage})`;
+    
+    // IZMENA: SLIKA SE LEPI NA WRAPPER, A NE NA HERO SECTION
+    document.getElementById("mainWrapper").style.backgroundImage = `url(${CONFIG.heroImage})`;
+    
     document.getElementById("locName1").innerText = CONFIG.locationName + ",";
     document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
     document.getElementById("locName2").innerText = CONFIG.locationName;
@@ -591,7 +549,6 @@
         galleryContainer.appendChild(img);
       });
     } else {
-      // Ako nema slika, sakrij celu sekciju da ne bude praznog prostora
       document.querySelector(".gallery-section").style.display = "none";
     }
 
@@ -624,24 +581,20 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // FUNKCIJE ZA MODAL
+    // MODAL
     function openModal() { document.getElementById('successModal').style.display = 'flex'; }
     function closeModal() { document.getElementById('successModal').style.display = 'none'; }
 
-    // SLANJE PODATAKA
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSQkngm_GkcsSzD3W9lfScxBrvjrFf2EDxx8FNuUHOCRzhU_BcPm_0AxVDxeCHRFEP/exec'; // <--- PROVERI DA LI JE OVO DOBAR LINK
+    // RSVP FORMA
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSQkngm_GkcsSzD3W9lfScxBrvjrFf2EDxx8FNuUHOCRzhU_BcPm_0AxVDxeCHRFEP/exec'; 
     const form = document.getElementById('rsvp-form');
     const btn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-
       const originalText = btn.innerText;
       btn.disabled = true;
       btn.innerText = 'Слање...';
-
-      // OVO JE KLJUČNA PROMENA: Koristimo URLSearchParams umesto običnog FormData
-      // Ovo rešava problem sa "undefined" podacima
       const data = new URLSearchParams(new FormData(form));
 
       fetch(scriptURL, { method: 'POST', body: data })
@@ -659,12 +612,10 @@
         });
     });
 
-    // Zatvaranje modala na klik sa strane
     document.getElementById('successModal').addEventListener('click', function (e) {
       if (e.target === this) closeModal();
     });
   </script>
 
 </body>
-
 </html>
