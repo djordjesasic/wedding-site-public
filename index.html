@@ -457,8 +457,8 @@
 </head>
 
 <body>
-
-  <section class="hero" id="heroSection">
+<div id="heroWrapper" class="hero-wrapper"></div>
+  <section class="hero">
     <div class="names-container">
       <div id="p1">Јелена<br>Шашић</div>
 
@@ -468,9 +468,9 @@
 
       <div id="p2">Милутин<br>Ђурђевић</div>
     </div>
-  <!-- </section>
+  </section>
 
-  <section> -->
+  <section class="hero">
     <p class="intro-text">
       Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
       јер срећа је најлепша кад се дели са најдражима!
@@ -488,7 +488,7 @@
       <div class="date-year" id="dateYear">2026.</div>
     </div>
   </section>
-
+</div>
   <section>
     <div class="timeline-icon">💍</div>
     <div class="vertical-line"></div>
@@ -575,7 +575,7 @@
     // POSTAVLJANJE IMENA
     document.getElementById("p1").innerHTML = CONFIG.partner1.replace(" ", "<br>");
     document.getElementById("p2").innerHTML = CONFIG.partner2.replace(" ", "<br>");
-    document.getElementById("heroSection").style.backgroundImage = `url(${CONFIG.heroImage})`;
+    document.getElementById("heroWrapper").style.backgroundImage = `url(${CONFIG.heroImage})`;
     document.getElementById("locName1").innerText = CONFIG.locationName + ",";
     document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
     document.getElementById("locName2").innerText = CONFIG.locationName;
