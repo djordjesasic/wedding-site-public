@@ -71,15 +71,21 @@
     /* --- HERO SEKCIJA (PRVA STRANA) --- */
     .hero {
       min-height: 100vh;
+      /* Zauzima ceo ekran */
       justify-content: center;
-      /* Background se sada kontrolise preko main-bg-wrapper */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .names-container {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
+      /* Ključno za "pisani" izgled */
       font-size: 55px;
+      /* Povećao sam jer je ovaj font nežniji */
       letter-spacing: 0px;
+      /* Spojena slova izgledaju lepše bez razmaka */
       line-height: 1.1;
       color: #444;
       text-transform: none;
@@ -108,7 +114,9 @@
     /* --- GALERIJA (TRAKA) --- */
     .gallery-section {
       padding: 30px 0;
+      /* Manji padding gore/dole */
       background-color: #fafafa;
+      /* Blago siva pozadina da se izdvoji */
       width: 100%;
       overflow: hidden;
     }
@@ -118,20 +126,28 @@
       gap: 15px;
       padding: 0 20px;
       overflow-x: auto;
+      /* Omogućava skrol levo-desno */
       scroll-behavior: smooth;
       width: 100%;
       box-sizing: border-box;
+
+      /* Sakrivanje scrollbara za lepši izgled */
       scrollbar-width: none;
+      /* Firefox */
       -ms-overflow-style: none;
+      /* IE 10+ */
     }
 
     .gallery-container::-webkit-scrollbar {
       display: none;
+      /* Chrome/Safari */
     }
 
     .gallery-item {
       height: 250px;
+      /* Visina trake */
       flex: 0 0 auto;
+      /* Ne dozvoljava sužavanje slika */
       border-radius: 4px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       object-fit: cover;
@@ -206,6 +222,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 24px;
       color: #9c8c74;
+      /* Zlatkasta nijansa */
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 5px;
@@ -334,12 +351,14 @@
     /* --- MODAL STIL --- */
     .modal-overlay {
       display: none;
+      /* Sakriveno po defaultu */
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.6);
+      /* Zatamnjena pozadina */
       z-index: 1000;
       justify-content: center;
       align-items: center;
@@ -358,6 +377,7 @@
       position: relative;
     }
 
+    /* Zlatni okvir unutar modala za eleganciju */
     .modal-content::before {
       content: '';
       position: absolute;
@@ -415,80 +435,61 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     @media (max-width: 400px) {
-      .names-container { font-size: 32px; }
-      .date-number { font-size: 70px; }
-    }
+      .names-container {
+        font-size: 32px;
+      }
 
-    /* Parallax CSS */
-    .main-bg-wrapper {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed; 
-      width: 100%;
-      position: relative;
-    }
-
-    .main-bg-wrapper section {
-      background: transparent !important; 
-      padding: 40px 20px;
-    }
-
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(5px);
-      padding: 40px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .gallery-section {
-      background-color: transparent !important;
+      .date-number {
+        font-size: 70px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div id="mainWrapper" class="main-bg-wrapper">
-    <section class="hero" id="heroSection">
-      <div class="names-container">
-        <div id="p1">Јелена<br>Шашић</div>
-        <div class="names-divider">
-          <span class="names-line"></span> & <span class="names-line"></span>
-        </div>
-        <div id="p2">Милутин<br>Ђурђевић</div>
+  <section class="hero" id="heroSection">
+    <div class="names-container">
+      <div id="p1">Јелена<br>Шашић</div>
+
+      <div class="names-divider">
+        <span class="names-line"></span> & <span class="names-line"></span>
       </div>
-    </section>
 
-    <section class="content-overlay">
-      <div class="glass-panel">
-        <p class="intro-text">
-          Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
-          јер срећа је најлепша кад се дели са најдражима!
-        </p>
+      <div id="p2">Милутин<br>Ђурђевић</div>
+    </div>
+  <!-- </section>
 
-        <div class="gallery-section">
-          <div class="gallery-container" id="galleryContainer">
-          </div>
-        </div>
+  <section> -->
+    <p class="intro-text">
+      Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
+      јер срећа је најлепша кад се дели са најдражима!
+    </p>
 
-        <div class="date-block">
-          <div class="date-day" id="dateDayName">НЕДЕЉА</div>
-          <div class="date-number" id="dateNum">31.</div>
-          <div class="date-month" id="dateMonth">МАЈ</div>
-          <div class="date-year" id="dateYear">2026.</div>
-        </div>
+    <div class="gallery-section">
+      <div class="gallery-container" id="galleryContainer">
       </div>
-    </section>
-  </div> <section>
+    </div>
+
+    <div class="date-block">
+      <div class="date-day" id="dateDayName">НЕДЕЉА</div>
+      <div class="date-number" id="dateNum">31.</div>
+      <div class="date-month" id="dateMonth">МАЈ</div>
+      <div class="date-year" id="dateYear">2026.</div>
+    </div>
+  </section>
+
+  <section>
     <div class="timeline-icon">💍</div>
     <div class="vertical-line"></div>
     <div style="margin-bottom: 40px;">
@@ -562,7 +563,6 @@
       </div>
     </div>
   </section>
-
   <div id="successModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-icon">🥂</div>
@@ -571,16 +571,11 @@
       <button onclick="closeModal()">У реду</button>
     </div>
   </div>
-
   <script>
     // POSTAVLJANJE IMENA
     document.getElementById("p1").innerHTML = CONFIG.partner1.replace(" ", "<br>");
     document.getElementById("p2").innerHTML = CONFIG.partner2.replace(" ", "<br>");
-    
-    // POPRAVAK: Samo mainWrapper dobija sliku (Parallax), heroSection mora biti providan
-    // Izbrisana je linija koja je stavljala sliku na heroSection
-    document.getElementById("mainWrapper").style.backgroundImage = `url(${CONFIG.heroImage})`;
-
+    document.getElementById("heroSection").style.backgroundImage = `url(${CONFIG.heroImage})`;
     document.getElementById("locName1").innerText = CONFIG.locationName + ",";
     document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
     document.getElementById("locName2").innerText = CONFIG.locationName;
@@ -596,6 +591,7 @@
         galleryContainer.appendChild(img);
       });
     } else {
+      // Ako nema slika, sakrij celu sekciju da ne bude praznog prostora
       document.querySelector(".gallery-section").style.display = "none";
     }
 
@@ -633,7 +629,7 @@
     function closeModal() { document.getElementById('successModal').style.display = 'none'; }
 
     // SLANJE PODATAKA
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSQkngm_GkcsSzD3W9lfScxBrvjrFf2EDxx8FNuUHOCRzhU_BcPm_0AxVDxeCHRFEP/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSQkngm_GkcsSzD3W9lfScxBrvjrFf2EDxx8FNuUHOCRzhU_BcPm_0AxVDxeCHRFEP/exec'; // <--- PROVERI DA LI JE OVO DOBAR LINK
     const form = document.getElementById('rsvp-form');
     const btn = document.getElementById('submit-btn');
 
@@ -644,6 +640,8 @@
       btn.disabled = true;
       btn.innerText = 'Слање...';
 
+      // OVO JE KLJUČNA PROMENA: Koristimo URLSearchParams umesto običnog FormData
+      // Ovo rešava problem sa "undefined" podacima
       const data = new URLSearchParams(new FormData(form));
 
       fetch(scriptURL, { method: 'POST', body: data })
@@ -661,6 +659,7 @@
         });
     });
 
+    // Zatvaranje modala na klik sa strane
     document.getElementById('successModal').addEventListener('click', function (e) {
       if (e.target === this) closeModal();
     });
