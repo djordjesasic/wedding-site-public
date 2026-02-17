@@ -522,22 +522,22 @@
 
     <form id="rsvp-form">
       <label>Име и презиме *</label>
-      <input type="text" name="Ime i prezime" required>
+      <input type="text" name="ime" required>
 
       <label>Потврђујем долазак*</label>
       <div class="radio-group">
-        <label class="radio-option"><input type="radio" name="Dolazak" value="da" checked> Да</label>
-        <label class="radio-option"><input type="radio" name="Dolazak" value="ne"> Не</label>
+        <label class="radio-option"><input type="radio" name="dolazak" value="da" checked> Да</label>
+        <label class="radio-option"><input type="radio" name="dolazak" value="ne"> Не</label>
       </div>
 
       <label>Број гостију</label>
-      <input type="text" name="Broj gostiju" placeholder="Нпр. само ја, ја +1..." required>
+      <input type="text" name="gostiju" placeholder="Нпр. само ја, ја +1...">
 
       <label>Имена пратилаца</label>
-      <input type="text" name="Imena pratilaca">
+      <input type="text" name="pratioci">
 
       <label>Порука</label>
-      <textarea name="Poruka" rows="3"></textarea>
+      <textarea name="poruka" rows="3"></textarea>
 
       <button type="submit" id="submit-btn">Потврди</button>
     </form>
@@ -626,51 +626,43 @@
     updateTimer();
 
     // FUNKCIJE ZA MODAL
-    function openModal() {
-      document.getElementById('successModal').style.display = 'flex';
-    }
+    function openModal() { document.getElementById('successModal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('successModal').style.display = 'none'; }
 
-    function closeModal() {
-      document.getElementById('successModal').style.display = 'none';
-    }
-
-    // AŽURIRANA SKRIPTA ZA SLANJE
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSQkngm_GkcsSzD3W9lfScxBrvjrFf2EDxx8FNuUHOCRzhU_BcPm_0AxVDxeCHRFEP/exec'
-    const form = document.getElementById('rsvp-form')
-    const btn = document.getElementById('submit-btn')
+    // SLANJE PODATAKA
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSQkngm_GkcsSzD3W9lfScxBrvjrFf2EDxx8FNuUHOCRzhU_BcPm_0AxVDxeCHRFEP/exec'; // <--- PROVERI DA LI JE OVO DOBAR LINK
+    const form = document.getElementById('rsvp-form');
+    const btn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', e => {
-      e.preventDefault()
-      
-      // Promeni dugme dok se šalje
-      const originalText = btn.innerText;
-      btn.disabled = true
-      btn.innerText = 'Слање...'
+      e.preventDefault();
 
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      const originalText = btn.innerText;
+      btn.disabled = true;
+      btn.innerText = 'Slanje...';
+
+      // OVO JE KLJUČNA PROMENA: Koristimo URLSearchParams umesto običnog FormData
+      // Ovo rešava problem sa "undefined" podacima
+      const data = new URLSearchParams(new FormData(form));
+
+      fetch(scriptURL, { method: 'POST', body: data })
         .then(response => {
-           // SAKRIJ ALERT, PRIKAŽI LEP MODAL
-           openModal();
-           
-           // Resetuj formu
-           form.reset();
-           
-           // Vrati dugme u normalu
-           btn.disabled = false
-           btn.innerText = originalText;
+          openModal();
+          form.reset();
+          btn.disabled = false;
+          btn.innerText = originalText;
         })
         .catch(error => {
-           alert('Дошло је до грешке, молимо Вас покушајте поново.'); // Ovde ostavi alert za grešku
-           btn.disabled = false
-           btn.innerText = originalText;
-        })
-    })
-    
-    // Zatvori modal ako neko klikne sa strane (na sivu pozadinu)
-    document.getElementById('successModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeModal();
-        }
+          alert('Дошло је до грешке, молимо Вас покушајте поново.');
+          btn.disabled = false;
+          btn.innerText = originalText;
+          console.error('Error!', error.message);
+        });
+    });
+
+    // Zatvaranje modala na klik sa strane
+    document.getElementById('successModal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
     });
   </script>
 
