@@ -38,7 +38,7 @@
         "images/11.jpeg"
       ],
 
-      heroImage: "images/hero.png"
+      heroImage: "images/new-hero.png"
     };
   </script>
 
@@ -453,11 +453,52 @@
         font-size: 70px;
       }
     }
+
+  .main-bg-wrapper {
+    /* Slika će se učitati preko JS-a, ovde samo podešavamo ponašanje */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* OVO JE KLJUČNO: Slika stoji fiksirano dok skroluješ (Parallax) */
+    background-attachment: fixed; 
+    width: 100%;
+    position: relative;
+  }
+
+  /* Uklanjamo belu pozadinu sa samih sekcija unutar wrappera */
+  .main-bg-wrapper section {
+    background: transparent !important; 
+    padding: 40px 20px;
+  }
+
+  /* Hero mora da ima visinu */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Stakleni panel ispod teksta i galerije */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.85); /* 85% bela boja */
+    backdrop-filter: blur(5px); /* Zamuti sliku iza teksta */
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto; /* Centriranje */
+  }
+
+  /* Galerija mora biti providna da bi se videla bela pozadina panela */
+  .gallery-section {
+    background-color: transparent !important;
+  }
   </style>
 </head>
 
 <body>
-
+  <div id="mainWrapper" class="main-bg-wrapper"></div>
   <section class="hero" id="heroSection">
     <div class="names-container">
       <div id="p1">Јелена<br>Шашић</div>
@@ -470,7 +511,8 @@
     </div>
   </section>
 
-  <section class="hero" id="heroSection">
+  <section class="content-overlay">
+    <div class="glass-panel"></div>
     <p class="intro-text">
       Позивамо Вас да својим присуством употпуните један од најважнијих дана у нашим животима,
       јер срећа је најлепша кад се дели са најдражима!
@@ -487,7 +529,9 @@
       <div class="date-month" id="dateMonth">МАЈ</div>
       <div class="date-year" id="dateYear">2026.</div>
     </div>
+    </div>
   </section>
+  </div>
 
   <section>
     <div class="timeline-icon">💍</div>
@@ -580,6 +624,7 @@
     document.getElementById("locAddr1").innerText = CONFIG.locationAddress;
     document.getElementById("locName2").innerText = CONFIG.locationName;
     document.getElementById("church").innerText = CONFIG.churchLocation;
+    document.getElementById("mainWrapper").style.backgroundImage = `url(${CONFIG.heroImage})`;
 
     // GENERISANJE GALERIJE
     const galleryContainer = document.getElementById("galleryContainer");
