@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="sr">
-<audio id="bgMusic" loop>
+<audio id="bgMusic" autoplay loop>
   <source src="music/song.mp3" type="audio/mpeg">
 </audio>
 
@@ -626,20 +626,31 @@
     const musicBtn = document.getElementById("musicToggle");
     let isPlaying = false;
 
-    // Pokušaj puštanja na prvi klik bilo gde na stranici
-    document.addEventListener('click', function() {
-        if(!isPlaying) {
-            playMusic();
-        }
-    }, { once: true }); // Izvršava se samo jednom
-
+    // Funkcija za puštanje muzike
     function playMusic() {
         music.play().then(() => {
             isPlaying = true;
             musicBtn.innerText = "🔊";
-        }).catch(e => console.log("Autoplay blokiran do interakcije"));
+        }).catch(e => {
+            console.log("Brauzer je blokirao autoplay. Čeka se klik korisnika.");
+            isPlaying = false;
+            musicBtn.innerText = "🔇";
+        });
     }
 
+    // Pokušaj da pustiš čim se sajt učita
+    window.addEventListener('load', () => {
+        playMusic();
+    });
+
+    // Ako je autoplay blokiran, pusti na prvi klik bilo gde na ekranu
+    document.addEventListener('click', function() {
+        if(!isPlaying) {
+            playMusic();
+        }
+    }, { once: true });
+
+    // Klik na samo dugme za zvuk
     function toggleMusic() {
         if (isPlaying) {
             music.pause();
